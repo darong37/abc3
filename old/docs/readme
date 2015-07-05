@@ -1,5 +1,5 @@
 
-0.git‚Ìİ’è
+0.gitã®è¨­å®š
 
 	cd
 	git clone https://github.com/darong37/.abc.git
@@ -7,67 +7,67 @@
 
 	.gitconfig.samp
 	exe/_init.bat.samp
-	‚ğC³‚·‚éi.samp‚ğæ‚Á‚ÄSavej
+	ã‚’ä¿®æ­£ã™ã‚‹ï¼ˆ.sampã‚’å–ã£ã¦Saveï¼‰
 	
 	git config --bool core.quotepath false
 	
 
-	ƒuƒ‰ƒ“ƒ`Ø‘Ö‚¦
-	git branch                    # •\¦
-	git checkout -b 'branch-name' # ì¬‚ ‚è
+	ãƒ–ãƒ©ãƒ³ãƒåˆ‡æ›¿ãˆ
+	git branch                    # è¡¨ç¤º
+	git checkout -b 'branch-name' # ä½œæˆã‚ã‚Š
 	git checkout 'branch-name'
 
 
-	ó‘ÔŠm”F
+	çŠ¶æ…‹ç¢ºèª
 	git status
 
-	ƒƒO1s•\¦
+	ãƒ­ã‚°1è¡Œè¡¨ç¤º
 	git log --oneline
 
 
-1.Git‚ÌŠî–{‘€ì
+1.Gitã®åŸºæœ¬æ“ä½œ
 	
 	git status
 	
-	# ’Ç‰Á/•ÏX
+	# è¿½åŠ /å¤‰æ›´
 	git add $target-file
 	git add -u
 
-	# ˆÚ“®/ƒŠƒl[ƒ€‚·‚éê‡
+	# ç§»å‹•/ãƒªãƒãƒ¼ãƒ ã™ã‚‹å ´åˆ
 	git mv old-name new-name
 
-	# íœ‚·‚éê‡
+	# å‰Šé™¤ã™ã‚‹å ´åˆ
 	git rm $target
 
-	# ƒ[ƒJƒ‹ƒŠƒ|ƒWƒgƒŠ
+	# ãƒ­ãƒ¼ã‚«ãƒ«ãƒªãƒã‚¸ãƒˆãƒª
 	git commit -m 'Add|Mod|Del reorder'
 	git commit -a -m 'Add|Mod|Del reorder'
 
 	#
 
 
-	ƒuƒ‰ƒ“ƒ`‚ğƒ}[ƒW‚·‚é
-		# ƒuƒ‰ƒ“ƒ`Šm”F
+	ãƒ–ãƒ©ãƒ³ãƒã‚’ãƒãƒ¼ã‚¸ã™ã‚‹
+		# ãƒ–ãƒ©ãƒ³ãƒç¢ºèª
 		git branch
 		git checkout master
 		git merger $target-branch
-		# ƒuƒ‰ƒ“ƒ`‚ğÁ‹
+		# ãƒ–ãƒ©ãƒ³ãƒã‚’æ¶ˆå»
 		git branch -d $target-branch
 	
 	git push origin master
 
-	‚â‚è’¼‚µ
-		addŒãƒtƒ@ƒCƒ‹‚ğ–ß‚·
+	ã‚„ã‚Šç›´ã—
+		addå¾Œãƒ•ã‚¡ã‚¤ãƒ«ã‚’æˆ»ã™
 		git reset HEAD <file>..
 
-		’¼‘O‚É‚µ‚½ƒRƒ~ƒbƒg‚ğ‚â‚è’¼‚·
+		ç›´å‰ã«ã—ãŸã‚³ãƒŸãƒƒãƒˆã‚’ã‚„ã‚Šç›´ã™
 		git commit --amend
 
-		git reset --soft   ¨ ƒ[ƒNƒfƒBƒŒƒNƒgƒŠ‚Ì“à—e‚Í‚»‚Ì‚Ü‚Ü‚ÅƒRƒ~ƒbƒg‚¾‚¯‚ğæ‚èÁ‚·B
-		git reset --hard   ¨ ƒRƒ~ƒbƒgæ‚èÁ‚µ‚½ã‚Åƒ[ƒNƒfƒBƒŒƒNƒgƒŠ‚Ì“à—e‚à‘‚«Š·‚¦‚éB
+		git reset --soft   â†’ ãƒ¯ãƒ¼ã‚¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å†…å®¹ã¯ãã®ã¾ã¾ã§ã‚³ãƒŸãƒƒãƒˆã ã‘ã‚’å–ã‚Šæ¶ˆã™ã€‚
+		git reset --hard   â†’ ã‚³ãƒŸãƒƒãƒˆå–ã‚Šæ¶ˆã—ãŸä¸Šã§ãƒ¯ãƒ¼ã‚¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å†…å®¹ã‚‚æ›¸ãæ›ãˆã‚‹ã€‚
 
-	ƒŠƒ‚[ƒg‚©‚ç‚Ì•ÏX”½‰f/ƒ}[ƒW‚·‚é
-	git pull
+	ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®å¤‰æ›´åæ˜ /ãƒãƒ¼ã‚¸ã™ã‚‹
+	git push
 
-	ƒ}[ƒW‚·‚é‘ã‚í‚è‚ÉƒŠƒx[ƒX‚·‚é(–¢Šm”F)
+	ãƒãƒ¼ã‚¸ã™ã‚‹ä»£ã‚ã‚Šã«ãƒªãƒ™ãƒ¼ã‚¹ã™ã‚‹(æœªç¢ºèª)
 	git pull --rebase
