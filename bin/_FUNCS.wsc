@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<component>
+<public>
+        <method name="get">
+        </method>
+</public>
+<script language="JScript">
+<![CDATA[
+function get(){
+  var fso0 = new ActiveXObject("Scripting.FileSystemObject");
+  var fln = fso0.OpenTextFile("C:\\Users\\eyos\\Desktop\\eyos\\bin\\_FUNCS.js");
+  var rtn = fln.ReadAll();
+  fln.Close();
+  fln = null;
+  fso0 = null;
+  
+  return rtn;
+}
+]]>
+</script>
+</component>
