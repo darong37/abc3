@@ -1,0 +1,23 @@
+####
+APPLNAM=$( basename ${0#-} )
+BASEDIR=$( cd `dirname ${0#-}` && pwd )
+CONFDIR=$BASEDIR/conf
+Dying () { echo $1; [[ $PS1 = "" ]] && exit 1
+  return 1
+}
+
+[[ $APPLNAM = '' ]] && Dying "APPLNAM undefined"
+[[ $BASEDIR = '' ]] && Dying "BASEDIR undefined"
+[[ $CONFDIR = '' ]] && Dying "CONFDIR undefined"
+
+[ ! -e $BASEDIR/_env ] && Dying "invalid env"
+
+ENVS=':'
+. $BASEDIR/_file
+. $BASEDIR/_general
+
+####
+# LOGSDIR=$BASEDIR/logs
+#
+# TEMPDIR=$( mktemp -d )
+#
