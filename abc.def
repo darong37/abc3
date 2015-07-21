@@ -1,0 +1,88 @@
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+####
+if [[ ${ENVS:-}: != *:def:* ]] \
+&& [[ $PS1 = "" ]];then
+  {
+    cat <<-HEADER
+		### 
+		### APPLNAM: $APPLNAM
+		### BASEDIR: $BASEDIR
+		### CONFDIR: $CONFDIR
+		### 
+		### DATE:    $TODAY
+		### ENVS:    $ENVS
+		### 
+	HEADER
+	
+    . $APPLNAM
+    
+    cat <<-FOOTER
+		###
+		### 開始時間： $TIME0
+		### 終了時間： $( date +'%H%M%S' )
+		### ログパス： $LOGFILE
+		###
+	FOOTER
+  } 2>&1 | perl -nle '
+    $times = time();
+    ($sec,$min,$hour,$dd,$mm,$yyyy,$week,$yday,$opt) = localtime($times);
+    $yyyy += 1900;
+    $mm += 1;
+    
+    if ( /^(INFO|WARN|ERROR|FAITAL) / ){
+      print STDERR "$_\n";
+    }
+    if ( /^### / ){
+      print $_."\n";
+    } else {
+      printf("%02d:%02d:%02d %s\n",$hour,$min,$sec,$_);
+    }
+  ' > $LOGFILE
+  exit
+####
+else
+  APPLNAM=$( basename ${0#-} )
+  BASEDIR=$( cd `dirname ${0#-}` && pwd )
+  CONFDIR=$BASEDIR/conf
+  Dying () { echo "FAITAL $@"; [[ $PS1 = "" ]] && exit 1
+    return 1
+  }
+  ENVS="$ENVS:def"
+
+  ## check
+  [[ $APPLNAM = '' ]]     && Dying "APPLNAM invalid"
+  [[ ${BASEDIR#/} = '' ]] && Dying "BASEDIR invalid"
+  [[ ${CONFDIR#/} = '' ]] && Dying "CONFDIR invalid"
+
+  ## temporary
+  TMPDIR=$( mktemp -d /tmp/${APPLNAM}_XXXXXXX )
+  TODAY=$( date +'%Y%m%d' )
+  TIME0=$( date +'%H%M%S' )
+
+  ## log
+  LOGSDIR=$BASEDIR/logs/$TODAY
+  mkdir -p $LOGSDIR       || Dying "can not create log directory $LOGSDIR"
+
+  LOGFILE=$LOGSDIR/${APPLNAM}_${TIME0}.log
+
+  Info  () { echo "INFO  $@" }
+  Warn  () { echo "WARN  $@" }
+  Error () { echo "ERROR $@" }
+
+  ## function
+  cd $CONFDIR
+    for cn in $( ls );do
+      . $cn
+      ENVS="$ENVS:$cn"
+    done
+  cd -
+fi
