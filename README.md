@@ -1,2 +1,2 @@
 # abc
-application based confguration
+application based configuration
